@@ -6,7 +6,7 @@ final List<EventModel> featuredEvents = [
   EventModel(
     id: 'evt1',
     title: 'Sufi Night - Nizami Brothers',
-    bannerUrl: 'https://yourcdn.com/images/sufi_night_banner.jpg',
+    bannerUrl: 'assets/images/vimg3.jpg',
     location: 'Delhi, India',
     dateTime: DateTime(2025, 7, 30, 20, 00),
     category: 'Music',
@@ -17,7 +17,7 @@ final List<EventModel> featuredEvents = [
   EventModel(
     id: 'evt2',
     title: 'Stand-up Night - Gaurav Gupta',
-    bannerUrl: 'https://yourcdn.com/images/gaurav_gupta_banner.jpg',
+    bannerUrl: 'assets/images/vimg2.jpg',
     location: 'Mumbai, India',
     dateTime: DateTime(2025, 8, 2, 19, 30),
     category: 'Comedy',
@@ -27,7 +27,7 @@ final List<EventModel> featuredEvents = [
   EventModel(
     id: 'evt3',
     title: 'Comedy Night with Parvinder Singh',
-    bannerUrl: 'https://yourcdn.com/images/parvinder_banner.jpg',
+    bannerUrl: 'assets/images/vimg1.jpg',
     location: 'Chandigarh, India',
     dateTime: DateTime(2025, 8, 15, 18, 00),
     category: 'Comedy',

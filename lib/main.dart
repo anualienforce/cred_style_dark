@@ -1,4 +1,6 @@
 import 'package:dark_cred/core/theme/dart_theme.dart';
+import 'package:dark_cred/ui/components/nav_bar/main_screen.dart';
+import 'package:dark_cred/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Drx Events',
       theme: darkTheme,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold( body: Center(child: Text('hello'),),),
+      home: MainScreen()
     );
   }
 }
