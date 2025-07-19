@@ -1,40 +1,36 @@
 
 
+import 'package:dark_cred/data/models/trending_model.dart';
+
 import '../models/event_model.dart';
 
-final List<EventModel> featuredEvents = [
-  EventModel(
+final List<TrendingModel> trending = [
+  TrendingModel(
     id: 'evt1',
     title: 'Sufi Night - Nizami Brothers',
-    bannerUrl: 'assets/images/vimg3.jpg',
     hAssets: 'assets/images/himg2.jpg',
-    location: 'Delhi, India',
-    dateTime: DateTime(2025, 7, 30, 20, 00),
     category: 'Music',
     description: 'Experience the magic of Sufi vibes by Nizami Brothers with decor, traditional outfits and drinks.',
-    price: 499.0,
-    isFeatured: true,
   ),
-  EventModel(
+  TrendingModel(
     id: 'evt2',
     title: 'Stand-up Night - Gaurav Gupta',
-    bannerUrl: 'assets/images/vimg2.jpg',
     hAssets: 'assets/images/himg3.jpg',
-    location: 'Mumbai, India',
-    dateTime: DateTime(2025, 8, 2, 19, 30),
     category: 'Comedy',
     description: 'Get ready to laugh hard at Gaurav Gupta’s witty punchlines in this energetic comedy night.',
-    price: 699.0,
   ),
-  EventModel(
+  TrendingModel(
     id: 'evt3',
     title: 'Comedy Night with Parvinder Singh',
-    bannerUrl: 'assets/images/vimg1.jpg',
     hAssets: 'assets/images/himg1.jpg',
-    location: 'Chandigarh, India',
-    dateTime: DateTime(2025, 8, 15, 18, 00),
     category: 'Comedy',
     description: 'Join the hilarious Parvinder Singh for a night of non-stop laughter and fun.',
-    price: 599.0,
+  ),
+  TrendingModel(
+    id: 'evt4',
+    title: 'Stand-up Night - Gaurav Gupta',
+    hAssets: 'assets/images/himg3.jpg',
+    category: 'Comedy',
+    description: 'Get ready to laugh hard at Gaurav Gupta’s witty punchlines in this energetic comedy night.',
   ),
 ];
