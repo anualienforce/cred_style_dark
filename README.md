@@ -25,7 +25,7 @@ A responsive, premium-quality homepage UI built using **Flutter**, inspired by t
 
 ```bash
 git clone https://github.com/anualienforce/cred_style_dark.git
-cd flutter-homepage-ui-task
+cd cred_style_dark
 flutter pub get
 flutter run
 ```
