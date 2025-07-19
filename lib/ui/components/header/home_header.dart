@@ -7,6 +7,7 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
   final String location;
   final VoidCallback? onSearchTap;
   final Function(String)? onSearchChanged;
+  final List<String> searchOptions;
 
   const HomeHeader({
     super.key,
@@ -14,6 +15,7 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
     required this.location,
     this.onSearchTap,
     this.onSearchChanged,
+    this.searchOptions = const ['hello','world', 'parvinder','nizam', 'gaurav'],//can pass in homescreen also
   });
 
   @override
@@ -33,6 +35,7 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               children: [
@@ -72,43 +75,110 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             const SizedBox(height: 20),
-            Container(
-              height: 48,
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: AppColors.secondary,
-                  width: 1,
-                ),
-              ),
-              child: TextField(
-                onChanged: onSearchChanged,
-                onTap: onSearchTap,
-                style: GoogleFonts.poppins(
-                  color: AppColors.textPrimary,
-                  fontSize: 14,
-      
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Search for events',
-                  hintStyle: GoogleFonts.poppins(
-                    color: AppColors.textSecondary,
-                    fontSize: 14,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: AppColors.textSecondary,
-                    size: 20,
-                  ),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-              ),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return Autocomplete<String>(
+                optionsBuilder: (TextEditingValue textEditingValue) {
+                  if (textEditingValue.text.isEmpty) {
+                    return const Iterable<String>.empty();
+                  }
+                  return searchOptions.where((String option) {
+                    return option
+                        .toLowerCase()
+                        .contains(textEditingValue.text.toLowerCase());
+                  });
+                },
+                onSelected: (String selection) {
+                  if (onSearchChanged != null) {
+                    onSearchChanged!(selection);
+                  }
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                fieldViewBuilder: (BuildContext context,
+                    TextEditingController textEditingController,
+                    FocusNode focusNode,
+                    VoidCallback onFieldSubmitted) {
+                  return Container(
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: AppColors.background,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: AppColors.secondary,
+                        width: 1,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: textEditingController,
+                      focusNode: focusNode,
+                      onChanged: onSearchChanged,
+                      onTap: onSearchTap,
+                      style: GoogleFonts.poppins(
+                        color: AppColors.textPrimary,
+                        fontSize: 14,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'Search for events',
+                        hintStyle: GoogleFonts.poppins(
+                          color: AppColors.textSecondary,
+                          fontSize: 14,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: AppColors.textSecondary,
+                          size: 20,
+                        ),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                optionsViewBuilder: (BuildContext context,
+                    AutocompleteOnSelected<String> onSelected,
+                    Iterable<String> options) {
+                  return Align(
+                    alignment: Alignment.topLeft,
+                    child: Material(
+                      elevation: 4.0,
+                      color: AppColors.background,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: SizedBox(
+                        width: constraints.maxWidth,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemCount: options.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final String option = options.elementAt(index);
+                            return InkWell(
+                              onTap: () {
+                                onSelected(option);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  option,
+                                  style: GoogleFonts.poppins(
+                                    color: AppColors.textPrimary,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            }),
           ],
         ),
       ),
@@ -116,6 +186,5 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(150);
 }

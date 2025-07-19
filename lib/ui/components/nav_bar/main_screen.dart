@@ -13,11 +13,10 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _screens = <Widget>[
-    MusicScreen(),
     HomeScreen(),
-    PlayerScreen(),
-    CloudScreen(),
-    MenuScreen(),
+    EventScreen(),
+    TvScreen(),
+    FavScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -29,11 +28,29 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+      body: Stack(
+          children:[ _screens[_selectedIndex],
+        Positioned(
+          // Position it at the bottom
+          bottom: 20.0, // Adjust this value for margin from bottom
+          left: 0,
+          right: 0,
+          child: Center( // Use Center to horizontally center the nav bar
+            child: CustomBottomNavBar(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+            ),
+          ),
+        ),
+
+      ]),
+      // bottomNavigationBar: Container(
+      //   width: 250,
+      //   child: CustomBottomNavBar(
+      //     selectedIndex: _selectedIndex,
+      //     onItemTapped: _onItemTapped,
+      //   ),
+      // ),
     );
   }
 }

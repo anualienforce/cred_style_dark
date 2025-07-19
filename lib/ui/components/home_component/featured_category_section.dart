@@ -1,48 +1,77 @@
 import 'package:dark_cred/core/theme/colors.dart';
-import 'package:dark_cred/data/dummy_data/category_data.dart';
+import 'package:dark_cred/data/models/category_model.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
-class FeaturedCategorySection extends StatefulWidget {
-  const FeaturedCategorySection({super.key});
+class FeaturedCategorySection extends StatelessWidget {
+  final List<CategoryModel> categories;
+  final void Function(CategoryModel category)? onCategoryTap;
+  final double itemHeight;
 
-  @override
-  State<FeaturedCategorySection> createState() => _FeaturedCategorySectionState();
-}
+  const FeaturedCategorySection({
+    super.key,
+    required this.categories,
+    this.onCategoryTap,
+    this.itemHeight = 100,
+  });
 
-class _FeaturedCategorySectionState extends State<FeaturedCategorySection> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: MediaQuery.sizeOf(context).width,
-      child: SingleChildScrollView(
+    if (categories.isEmpty) {
+      return SizedBox(height: itemHeight);
+    }
+
+    return SizedBox(
+      height: itemHeight,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         scrollDirection: Axis.horizontal,
-        child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context,index){
-            final data = eventCategories.elementAt(index);
-          return Container(
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.primary)
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(data.icon),
-                Text(data.title)
-              ],
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          final category = categories[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: AspectRatio(
+              aspectRatio: 1.0,
+              child: InkWell(
+                onTap: () => onCategoryTap?.call(category),
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.background,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: AppColors.primary)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        category.icon,
+                        color: AppColors.primary,
+                        size: 28,
+                      ),
+                      const SizedBox(height: 8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Text(
+                          category.title,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.poppins(
+                            color: AppColors.textPrimary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
           );
-
-        },itemCount: eventCategories.length,),
+        },
       ),
     );
   }

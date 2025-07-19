@@ -1,3 +1,5 @@
+import 'package:dark_cred/data/dummy_data/artist_data.dart';
+import 'package:dark_cred/data/dummy_data/category_data.dart';
 import 'package:dark_cred/data/dummy_data/trending_data.dart';
 import 'package:dark_cred/ui/components/common/section_title_row.dart';
 import 'package:dark_cred/ui/components/header/home_header.dart';
@@ -20,21 +22,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-
-  static final List<Widget> _screens = <Widget>[
-    HomeScreen(),
-    LibraryScreen(),
-    PlayerScreen(),
-    CloudScreen(),
-    MenuScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: HomeHeader(userName: 'Mayur Vihar',
           location: 'Lucknow, India'),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: 80),
         child: Column(
           children: [
             SectionTitleRow(title: 'Featured Events'),
@@ -50,15 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 500,
             ),
             SectionTitleRow(title: 'Featured Category'),
-            FeaturedCategorySection(),
+            FeaturedCategorySection(categories: eventCategories,),
             SectionTitleRow(title: 'Upcoming Events'),
-            UpcomingEventsSection(),
+            UpcomingEventsSection(events: featuredEvents,),
             SectionTitleRow(title: 'Artists on Tixoo'),
-            ArtistsSection(),
+            ArtistsSection(artists: artists,),
             SectionTitleRow(title: 'Trending'),
-            TrendingSection(trending: trending, height: 250,width: 700,),
+            TrendingSection(trending: trending, height: 250),
             SectionTitleRow(title: 'Popular Events'),
-            PopularEventsSection(),
+            PopularEventsSection(events: featuredEvents,),
           ],
         ),
       ),
