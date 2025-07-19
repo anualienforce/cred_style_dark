@@ -17,7 +17,30 @@ A responsive, premium-quality homepage UI built using **Flutter**, inspired by t
 
 ## 📱 Tech Stack
 
-- **Flutter** 3.22.x  
-- **Dart** 3.x  
-- `google_fonts`, `flutter_svg`, `provider` (if needed for state)
+- **Flutter** 3.29.3  
+- **Dart** 3.7.2  
+- `google_fonts`, `intl`
+
+## 🧪 Setup Instructions
+
+```bash
+git clone https://github.com/anualienforce/cred_style_dark.git
+cd flutter-homepage-ui-task
+flutter pub get
+flutter run
+```
+
+## ✅ Known Issues
+
+- Currently static UI (no live API integration).
+- Animation used sparingly due to time constraints.
+- No state logic yet (pure UI task).
+  
+---
+
+## 📈 Future Improvements
+
+- Add backend data sources for each section
+- Dynamic banners and carousel for offers
+- Animate category tap or featured card scroll
 
