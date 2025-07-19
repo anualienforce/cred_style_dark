@@ -159,7 +159,7 @@ class EventCard extends StatelessWidget {
                     children: [
                       _DateWidget(dateTime: event.dateTime),
                       InkWell(
-                        onTap: () { /* TODO: Favorite logic */ },
+                        onTap: () {  },
                         customBorder: const CircleBorder(),
                         child: Container(
                           padding: const EdgeInsets.all(8),
@@ -180,7 +180,7 @@ class EventCard extends StatelessWidget {
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min, // Take up minimum space
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         event.title,

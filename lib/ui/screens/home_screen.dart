@@ -1,5 +1,6 @@
 import 'package:dark_cred/ui/components/common/section_title_row.dart';
 import 'package:dark_cred/ui/components/header/home_header.dart';
+import 'package:dark_cred/ui/components/home_component/artists_section.dart';
 import 'package:dark_cred/ui/components/home_component/featured_category_section.dart';
 import 'package:dark_cred/ui/components/nav_bar/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
             FeaturedCategorySection(),
             SectionTitleRow(title: 'Upcoming Events'),
             UpcomingEventsSection(),
+            SectionTitleRow(title: 'Artists on Tixoo'),
+            ArtistsSection()
           ],
         ),
       ),
