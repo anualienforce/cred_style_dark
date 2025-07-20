@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../core/theme/colors.dart';
 import '../../../data/models/event_model.dart';
 
-class UpcomingEventsSection extends StatelessWidget {
+class CommonEventsSection extends StatelessWidget {
   final List<EventModel> events;
   // final VoidCallback? onApplyFiltersTapped;
   // final VoidCallback? onSeeAllTapped;
@@ -13,7 +13,7 @@ class UpcomingEventsSection extends StatelessWidget {
   // final Function(EventModel) onFavoriteTapped;
   // final Function(EventModel) onBookNowTapped;
 
-  const UpcomingEventsSection({
+  const CommonEventsSection({
     super.key,
     required this.events,
     // this.onApplyFiltersTapped,

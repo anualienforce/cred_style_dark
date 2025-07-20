@@ -11,8 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/dummy_data/event_data.dart';
 import '../components/home_component/feature_banner_section.dart';
-import '../components/home_component/popular_events_section.dart';
-import '../components/home_component/upcoming_events_section.dart';
+import '../components/home_component/common_events_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,13 +39,13 @@ class _HomeScreenState extends State<HomeScreen> {
             SectionTitleRow(title: 'Featured Category'),
             FeaturedCategorySection(categories: eventCategories,),
             SectionTitleRow(title: 'Upcoming Events'),
-            UpcomingEventsSection(events: featuredEvents,),
+            CommonEventsSection(events: featuredEvents,),
             SectionTitleRow(title: 'Artists on Tixoo'),
             ArtistsSection(artists: artists,),
             SectionTitleRow(title: 'Trending'),
             TrendingSection(trending: trending, height: 250),
             SectionTitleRow(title: 'Popular Events'),
-            PopularEventsSection(events: featuredEvents,),
+            CommonEventsSection(events: featuredEvents,),
           ],
         ),
       ),
