@@ -1,16 +1,46 @@
-# dark_cred
+# 🌑 CRED-Style Dark Mode Flutter UI
 
-A new Flutter project.
+A responsive, premium-quality homepage UI built using **Flutter**, inspired by top financial apps like **CRED**, **CoinDCX**, and **Jupiter**. Designed with dark theme, modern layout standards, and smooth UX transitions.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- Dark mode UI with rich depth & contrast
+- Modular, scalable widget/component structure
+- Clean spacing, padding, and font hierarchy
+- Interactive components with optional animations
+- Responsive layout across mobile screen sizes
+- Scrollable content with BottomNavigationBar
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📱 Tech Stack
+
+- **Flutter** 3.29.3  
+- **Dart** 3.7.2  
+- `google_fonts`, `intl`
+
+## 🧪 Setup Instructions
+
+```bash
+git clone https://github.com/anualienforce/cred_style_dark.git
+cd cred_style_dark
+flutter pub get
+flutter run
+```
+
+## ✅ Known Issues
+
+- Currently static UI (no live API integration).
+- Animation used sparingly due to time constraints.
+- No state logic yet (pure UI task).
+  
+---
+
+## 📈 Future Improvements
+
+- Add backend data sources for each section
+- Dynamic banners and carousel for offers
+- Animate category tap or featured card scroll
+
